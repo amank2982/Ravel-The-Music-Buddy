@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravel</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-wqyX5pZt2ePsz25Ufb1BJqdnToOo7fyI+tU1gNDYLAsGjRHP57pDl/FwS+glnQ8YdVHwm53E/DAU4tNxRU06jA==" crossorigin="anonymous" /> -->
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="searchStyle.css">
+    
+</head>
+<body>
+    <section id="header1">
+        <div class="logo">
+            <div>
+                <input type="checkbox" id="check">
+                <label for="check">
+                    <i class="fa fa-bars" id="btn"></i>
+                    <h6 class="&#10799" id="cancel">X</h6> 
+                </label>
+                <div class="sidebar">
+                    <header><strong>Dashboard</strong></header>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div>
+            <a href="index.html"><img src="https://images-platform.99static.com//Qci1XFMigg8KyofnPwoh2j1gIkU=/369x2306:925x2862/fit-in/590x590/99designs-contests-attachments/56/56303/attachment_56303289"></a>
+            </div>
+            <div>
+                <a href="index.html"><h1><strong>Ravel</strong></h1></a>
+            </div>
+        </div>
+        <div class="search_nav">
+            <div class="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+    </section>
+    
+            <section class="search_bar">
+                <form action="#" id="searchForm">
+                    <label for="searchbar">Search your preferences</label> <br>
+                    <input type="text" id="searchbar" placeholder="Search music" name="search_query"> <br>
+                    <button type="submit">Search</button>
+                </form>
+                <div id="searchResults" class="results-container"></div>
+            </section>
+            
+                <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                <script src="search.js"></script>
+</body>
+</html>

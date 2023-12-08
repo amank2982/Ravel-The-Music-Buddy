@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reval</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <!-- <link rel="stylesheet" href="tc1.css"> -->
+    <!-- Style part -->
+    <script src="api.js"></script>
+    <style>
+        @import url('https://fonts.google.com/specimen/Poppins');
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    #header1{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px;
+        background: aliceblue;
+        position: sticky;
+        height: 30px;
+        top: 0;
+        left: 0;
+        box-shadow: 10px 10px 150px;
+        z-index: 4;
+    }
+    .sidebar{
+        position: fixed;
+        left: -250px;
+        width: 240px;
+        height: 100%;
+        background: #04202d;
+        border-radius: 5px;
+    }
+    .sidebar header{
+        font-size: 22px;
+        color: rgb(239, 233, 233);
+        text-align: center;
+        line-height: 70px;
+        background: #031118;
+        user-select: none;
+        font-weight: 900;
+        height: 60px;
+    }
+    .sidebar ul a{
+        display: block;
+        height: 100%;
+        width: 100%;
+        line-height: 45px;
+        font-size: 20px;
+        padding-left: 40px;
+        box-sizing: border-box;
+        border-top: 2px solid rgba(255,255,255,.1);
+        border-bottom: 2px solid black;
+        transition: .3s;
+        color: white;
+    }
+    .sidebar ul li:hover a{
+        padding-left: 50px; 
+    }
+    #check{
+        display: none; 
+    }
+    label #btn, label #cancel{
+        position: absolute;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+    label #btn{
+        left: 10px;
+        top: 15px;
+        font-size: 15px;
+        color: white;
+        padding: 6px 12px;
+        background: #042331;
+        transition: .5s;
+    }
+    label #cancel{
+        z-index: 1111;
+        left: -195px;
+        top: 25px;
+        font-size: 10px;
+        color: #0a5275;
+        padding: 5px 5px;
+        height: 10px;
+        color: rgb(240, 240, 234);
+        /* font-weight: 700; */
+        background: #042331;
+    }
+    #check:checked ~ .sidebar{
+        left: 0;   
+        top: 0px;
+    }
+    #check:checked ~ label #btn{
+        left: 250px;   
+        opacity: 0;
+        pointer-events: none;   
+    }
+    #check:checked ~ label #cancel{
+        left: 205px;   
+    }
+    .logo{
+        display: flex;
+        align-items: left;
+        justify-content: space-between;
+        gap: 10px;
+        margin-left: 30px;
+    }
+    .logo a{
+        text-decoration: none;
+        color: black;
+    }
+    #header1 img{
+        width: 50px;
+        height: 35px;
+        border-radius: 10px;
+    }
+    #header1 h1{
+       font-size: 2rem;
+       padding-bottom: 3px;
+       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .search_nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap:5px;
+    }
+    .search {
+        float: left;
+        margin: 7px;
+    }
+    
+    .search button {
+        background-color: transparent;
+        border: none;
+        color: #555;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: -40px; /* Adjust the margin to position the icon properly */
+    }
+    
+    .search button:hover {
+        color: #000;
+    }
+    .search input[type=text]{
+        width:250px;
+        height:25px;
+        border-radius:25px;
+        border: 1px solid black;
+        padding-left: 15px;
+    }     
+    .search{
+        float:left;
+        margin:7px;
+    }
+    .navbar1 {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 18px;
+        margin-right: 20px;
+    }
+    
+    .navbar1 a {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 900;
+        color: #1a1a1a;
+        transition: 0.3s ease;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .navbar1 a:hover,
+    .navbar1 a.active {
+        background-color: #031118;
+        color: whitesmoke;
+    }
+        header .menu_side{
+        position: relative;
+        width: 100%;
+        height: 50%;
+        box-shadow: 5px 0px 2px #090f1f;
+        color: #fff;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-gW9CgUnpKXNQwZDRYMjLWwwW-i2qYFtnBw&usqp=CAU');
+        background-size: 100%;
+    }
+    
+    header .menu_side h1{
+        font-size: 20px;
+        margin: 0px 0px 0px 20px;
+        font-weight: 500;
+    }
+    header .menu_side .HTS{
+        display: flex;
+        align-items: center;
+        gap: 100px;
+    }
+    header .menu_side .playlist{
+        margin: 20px 0px 0px 20px;
+    }
+    header .menu_side .playlist img{
+        width: 400px;
+        height: 200px;
+        /* margin-left: 150px; */
+    }
+    header .menu_side h1{
+        font-size: 35px;
+        left: 30px;
+    }
+    header .menu_side .playlist-content h1{
+        color: white;
+        margin-top: -40px;
+    }
+    header .menu_side .playlist h2{
+        font-size: 25px;
+    }
+    header .menu_side .playlist-content{
+        right: 20px; 
+    }
+    header .menu_side .menu_song{
+        width: 100%;
+        height: 650px;
+        margin-top: 40px;
+    }
+    header .menu_side .menu_song li{
+        list-style-type: none;
+        padding: 10px 20px 10px 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: .3s linear;
+        margin-bottom: 5px;
+    }
+    header .menu_side .menu_song li:hover{
+        background: rgb(105, 105, 170,.1);
+    }
+    header .menu_side .menu_song li img{
+        width: 200px;
+        height: 150px;
+        margin-left: 25px;
+    }
+    header .menu_side .menu_song li h5{
+        font-size: 15px;
+        margin-left: 25px;
+        margin-right: 350px;
+    }
+    
+    #feature{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 3px;
+    }
+    #feature .fe-box{
+        width: 110px;
+        height: 232px;
+        text-align: center;
+        padding: 25px 15px;
+        box-shadow: 20px 20px 34px rgba(0,0,0,0.03);
+        margin: 45px 20px;
+        margin-top: 65px;
+        border-radius: 20px;
+    }
+    .F1{
+        width: 200px;
+        height: 100px;
+        object-fit: fill;
+        border-radius: 30px;
+    }
+    #feature .fe-box:hover{
+        box-shadow: 10px 10px 54px rgba(70,62,221,0.1);
+    }
+    #feature .fe-box h4{
+        float: center;
+        margin-bottom:30px;
+        font-size: 10px;
+        /* margin-left: 130px; */
+    }
+    #feature .fe-box img{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+       </style> 
+</head>
+
+<!-- Body -->
+<body>
+     <header>
+        <section id="header1">
+            <div class="logo">
+                <div>
+                    <input type="checkbox" id="check">
+                    <label for="check">
+                        <i class="fa fa-bars" id="btn"></i>
+                        <h6 class="&#10799" id="cancel">X</h6>
+                    </label>
+                    <div class="sidebar">
+                        <header><strong>Dashboard</strong></header>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <a href="index.html"><img
+                            src="https://images-platform.99static.com//Qci1XFMigg8KyofnPwoh2j1gIkU=/369x2306:925x2862/fit-in/590x590/99designs-contests-attachments/56/56303/attachment_56303289"></a>
+                </div>
+                <div>
+                    <a href="#">
+                        <h1><strong>Ravel</strong></h1>
+                    </a>
+                </div>
+            </div>
+            <div class="search_nav">
+                <!-- Remove the entire search bar and keep only the FontAwesome search icon -->
+                <div class="search">
+                    <form id="searchForm" action="search.html" method="get" target="_blank">
+                        <!-- Use the FontAwesome search icon as the submit button -->
+                        <button type="submit" id="searchBtn" class="fa fa-search"></button>
+                    </form>
+                </div>
+            </div>  
+        </section>
+
+        <section class="menu_side">
+            <!-- <h1>Top Charts</h1> -->
+            <div class="HTS">
+                <div class="playlist">
+                    <img src="https://a10.gaanacdn.com/gn_pl_img/playlists/qa4WEqWP1p/4WEkMOE5KP/size_m_1699268011.webp" style="border: 1px solid white;">
+                </div>
+                <div class="playlist-content">
+                    <h1>Top Party Songs</h1>
+                </div>
+            </div>
+
+
+
+
+            <section id="feature" class="section-p1">
+                <div class="fe-box" data-video-id="q_0uF80IZXM">
+                    <img class="F1"
+                         src="https://i.ytimg.com/vi/IE8OD5FbU-c/maxresdefault.jpg" style="border: 1px solid white;">
+                    <h4>Garmi</h4>
+                    <button class="play-button">Play</button>
+                </div>
+                <div class="fe-box" data-video-id="8LZgzAZ2lpQ">
+                    <img class="F1"
+                         src="https://i.ytimg.com/vi/D8I2D6VLQQc/maxresdefault.jpg" style="border: 1px solid white;">
+                    <h4>Abhi Toh Party Shuru Hui Hai</h4>
+                    <button class="play-button">Play</button>
+                </div>
+                <div class="fe-box" data-video-id="Jyst8oIHOAY">
+                    <img class="F1"
+                         src="https://i.scdn.co/image/ab67616d00001e02f78d8d3dd6f83183ec4309e2" style="border: 1px solid white;">
+                    <h4>Mercy</h4>
+                    <button class="play-button">Play</button>
+                </div>
+                <div class="fe-box" data-video-id="yIIGQB6EMAM">
+                    <img class="F1"
+                         src="https://i.scdn.co/image/ab67616d0000b27382f0b09ca518a1563175ed85" style="border: 1px solid white;">
+                    <h4>Bom Diggy</h4>
+                    <button class="play-button">Play</button>
+                </div>
+                <div class="fe-box" data-video-id="SD4Z8dlZPd8">
+                    <img class="F1"
+                         src="https://c.saavncdn.com/991/Genda-Phool-Hindi-2020-20200325120350-500x500.jpg" style="border: 1px solid white;">
+                    <h4>Genda Phool</h4>
+                    <button class="play-button">Play</button>
+                </div>
+                <div class="fe-box" data-video-id="hzTg4zPBtDU">
+                    <img class="F1"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDSSfgZL5BXmtkiuw2Hg4-O8KqtIGEYhT6BXhkdyLUZhdeG0aojGk_Kz7r0Wa0BQ2UzbE&usqp=CAU" style="border: 1px solid white;">
+                    <h4>3 Peg</h4>
+                    <button class="play-button">Play</button>
+                </div>
+            </section>
+    </header> 
+      
+</body>
+</html>
